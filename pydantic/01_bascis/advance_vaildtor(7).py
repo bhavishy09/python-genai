@@ -36,7 +36,7 @@ class product(BaseModel):
 # we use mode='before' to specify that the validator should be applied before any other validation checks are performed on the price field.
     @field_validator('price',mode='before')
     def parse_price(cls,v):
-        if instance(v,str):
+        if isinstance(v,str):
             return float(v.replace('$',''))
         return v
     
