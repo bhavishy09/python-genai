@@ -1,0 +1,233 @@
+google translate ,alexa
+autocorrct these are nlP
+TEXT INTO IMAGES 
+NLP--> NATURAL PROCESSING LANGUAGE 
+
+ITS LIKE TAKING TEXT DTAT CONVERT INTO SOME TASK 
+
+
+tokenization in nlp 
+topics-->
+corpus--> paragraph
+documnetatiom-->sentences
+vocabulurey-->unique words
+words
+
+tolenization--> PROCESS   CONVERT either a paragraph or sentences INTO tokents{sentences,words}
+
+example -->
+"my name is bhavishya  and i have a intrest in teaching ml ,nlp and dl. i am also student "
+
+now this above corpus convert into toekens {sentences}
+
+1--> my name is bhavishyaand i have a intrest in teaching ml ,nlp and dl
+2-->i m also student 
+
+paragraph-->sentences=tokenization
+
+now tokenization semtences sentences convert into words . because 
+words also be toekens and sentences also be tokens 
+
+---------------------------------------------------------------
+
+NLTK(NATURAL LANGUAGE TOOLKIT)-->BUILDING PYTHON PROGRAMM TO WORK WITH HUMAN LANGUAGE DATA 
+
+-------------------------------------------------------------------------------
+stemming --> 
+is the PROCESS of reducing a word to its word stem that affixes to suffixes 
+and prefix or to the roots of words known as lemmma ,stemming is imp 
+in NLP AND NLU.
+
+classification problem 
+comments of product is +ve review or -ve review
+review----> eating,eat,eaten[going gone goes ]--> go
+-----------------------------------------------------------------
+
+   " text preprocessing "
+
+   sentiment analysis 
+
+   steps for this.
+    basically cleanning the sentences
+   1.dataset-->  " 2.text preprocessing part1 " --> " 3.text preprocessing part2"-->4.word to text --> 5.ml algo 
+                 1.tokenization                    1. stemming           
+                 2.lowercase the word              2.lemmmatization
+                 3.regular expression              3.stopwords
+
+step 4 -->
+    later text are convert into vector 
+    eg.techniques 1.bert,2.one hot encodding ,bag of words ,TF-idf
+    ,word2vec,avgword2vec.
+
+
+
+  1. techniques word to vector.
+
+  a.one hot encoding-->
+
+  "text"                      o/p
+  D1 this food is good         1
+  D2 this is bad               0
+  D3 pizza is amazing          1
+
+
+  vocabulurey (unique word)
+          the food is good bad pizza amazing
+the-->     1   0    0   0   0    0     0
+is-->      0   0    1   0   0    0     0
+# place when in fornt of unique word 
+
+after applying one hot encoding 
+D1-->" [1 0 0 0 0 0 0
+        0 1 0 0 0 0 0
+        0 0 1 0 0 0 0
+        0 0 0 1 0 0 0 ]"
+
+advantages --> easy to implement 
+
+there are some disadavntage in OHE -->1.sparse matrix complex(overfitting );
+2.ml algo --> fixed size i/p(esme input matrix not fixed size )
+3.out of vocabulurey
+
+
+now words into vector--> 
+
+
+------------------------------------------------------------------------------
+2.bow(bag of words)
+
+dataset
+ text                       o/p
+                                  
+                                   lower all words
+ he is good boy              1   ----------------->  s1--> good boy 
+ she is good good  girl            1    stopwords           s2--> good good  girl
+ boy and girl are good       1                        s3-> boy girl good 
+
+vocabulurey   freq              good     boy    girl 
+good             3       s1--> [ 1         1       0]
+boy              2 ----> s2--> [ 1         0       1]
+girl             2       s3 --> [1          1      1]
+ 
+
+ binary bow (0 and 1)
+ bow(count will upadted based on freq)
+
+ advantages-->
+ 1.simple and intitutive
+ 2.fixed size input 
+ disadavntage-->
+ 1.sparse matrix or array --> overfitting
+ 2.ordering of word is change 
+ 3.out of vocabulurey
+ 4.semantic meaning 
+
+ -----------------------------------------------------------
+ 3.N-grams
+                                food   not    good
+ s1-->the food is good         1        0       1
+ s2--the food is not good      1        1       1
+ 
+ bigram --> combination of two
+
+ [ food   not good  food good   food not    not good ]
+ s1 1       0  1       1          0           0
+ s2 1       1   1       0         1            1     
+
+ sklearn-->   n-grams =(1,1)--> unigrams
+                      =  (1,2)--> unigrams,bigram
+                           (1,3)--> unigrams,bigram,trigram 
+
+
+  --------------------------------------------------------------------
+
+  TF-idf(term frequency -inverse document frequency)
+
+  s1-> good boys
+  s2--> good girl
+  s3--> boy girl good 
+
+  term freq=no of repitive  words in sentences/no of words in sentences
+  idf=loge(no of sentences/no of sentences contain words)
+
+
+          term freq                                  IDF
+        s1    s2     s3             
+good    1/2   1/2     1/3               good      loge(3/3)=0
+
+boy      1/2   0       1/3              boy        loge(3/2)
+
+girl      0     1/2     1/3             girl        loge(3/2)
+
+
+                 final tf-idf 
+      good           boy                   girl 
+s1     0             1/2* loge(3/2)         0
+
+s2      0            0                     1/2* loge(3/2)
+
+s3      0           1/2* loge(3/2)         1/2* loge(3/2)
+
+
+
+advantages                        disadavntage
+1.intitutive                         1/sparse matrix
+2.fixed size->vocab size             2 oov
+3.word importance is                 3.
+getting capture
+
+-----------------------------------------------------------------------
+word embeddings.
+in NLP  word embeddings is a term used for the representation of words for text
+analysis typically in the form of a real valued vector that encodes the 
+meaning of word ,that closer in the vector space expeted to similiar 
+meaning
+
+wod embeddings techniques
+----->count of frew[ 1.ohe,2.bow,3.TF-IDF]
+-----> deep learning trained model [word2vec]
+
+
+word2vec-->
+------> CBOW (continous bag of words)
+------>skipgram
+
+
+---------------------------------------------
+word2vec
+word2vec is technique for nlp ,Word2Vec is a technique for
+ converting words into numerical vectors, 
+or "word embeddings," that capture their meaning and 
+semantic relationships based on their
+ surrounding context within a large text corpus
+
+ vocabulurey-->unique word -->corpus
+
+features              boy  girl  king  queen   apple   mango
+gender                 -1   1     -.92   +.92    
+royal                  .1   .02     .95   .96   
+age                    .03   -
+food
+  |
+  |
+  |
+  |
+  300 dimensions        
+
+  example --> king-boy+queen =girl 
+  get this kind of relationships by seeing these vectors 
+
+  --------------------------------------------------------------------
+  1.CBOW
+  corpus/dataset
+
+  corpus--> inureon company JS related data scienece
+
+  window size =5  -> imp for create input and ouput data 
+
+                           i/p                                        o/p
+                      inureon,company,related,to                      JS(centeral word)
+ (next window )      company,related,to,data                          related
+
+-----------------------------------------------------
+skipgram

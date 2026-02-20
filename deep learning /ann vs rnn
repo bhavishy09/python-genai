@@ -1,0 +1,56 @@
+ANN(artificila neural network)
+
+
+
+dataset
+
+exmaple--> sentimental analysis
+
+text                  o/p
+the food is good        1
+the food is bad         0
+the food is bad         0
+
+
+solve via ANN
+
+--> TEXT processing -> text-> vectors
+--> vcoab size -> 4
+
+
+bow
+
+        food     good       bad       net
+
+s1->      1        1        0           0
+
+s2 ->      1        0        1          0
+
+s3->       1        1        0           1
+
+
+
+text data -> sequence imform is imp.
+
+mean of sentence is lost becuz no sequence here things are in frequncey 
+
+
+drawback of ANN -> no sequence imform
+solution -> RNN
+
+
+simple rnn-->
+
+sending the o/p itsef hidden layer  show in daigram 
+passing every input to each time step
+
+inshort whatever output is hidden layer that will be sent to next time step as input
+in rnn we pass one word at a time
+
+
+
+
+in forward propogation every rnn have context of previous time step 
+hidden state -> context
+see in daigram 
+
