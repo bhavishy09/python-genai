@@ -25,7 +25,6 @@ class User(BaseModel):
     address: Address
     created_at: datetime
     tages: List[str] = []
-
     model_config=ConfigDict(
         json_encoders={
             datetime: lambda v: v.strftime('%d-%m-%y %H-%M-%S')
