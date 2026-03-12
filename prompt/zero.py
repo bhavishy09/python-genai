@@ -1,3 +1,8 @@
+# zero shot prompting
+"""
+
+
+"""
 
 # these calls are done by google llm 
 # using openai library to make calls to google llm api
@@ -15,11 +20,13 @@ client = OpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/"
 )
 
+#  zero shot promopting: direct give the instruction to model without providing any example to model
+SYSTEM_PROMPT= "only answer coding related problems if user ask something other than coding just say sorry ."
 response=client.chat.completions.create(
 
         model="gemini-2.5-flash",
         messages=[
-            {"role":"system","content":"you are a helpful assistant that helps users solve math problems."},
+            {"role":"system","content":SYSTEM_PROMPT},
              {"role":"user","content":"hii there solve the math problem 2+2"}
         ]
 

@@ -1,1 +1,21 @@
 system prompt is first msg to given your chatbot 
+
+prompt style
+ <!-- alpaca prompt -->
+
+ ### instruction: <system_prompt>\n
+ ### Input: <User_Query>
+ ### response:\n
+
+ <!-- Chat ML -->
+
+ {"role": "system" |"user" |"assistant"
+    "content":"string"
+ 
+ 
+ }
+
+ <!-- INST -->
+ LLMA2
+
+ [INST] what is time now?[?INST]
