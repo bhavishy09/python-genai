@@ -25,4 +25,21 @@ IN ORDER work queue system we. need redis server running in background
 
 
 
+
+we make worker in quue/worker.py ->
+ this will process the query and return the result
+
+ and client in client/rq_client.py -> this will add the query to the queue
+   and wait for the result
+
+   what actually we do in worker and in client -> 
+   same as chat.py but in worker we will process 
+   the query and return the result to the client
+     and in client we will add the query to the
+       queue and wait for the result
+   
+
+   fastapi server(post/chat{msg}) -> -> enque the 
+   query(process)and return the result to the user
+
 """
